@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="css/index.css">
+
+{{!-- Header section with logo --}}
+{{> header}}
+
+<section>
+    {{!-- Navbar with links to home page and login page --}}
+    <nav>
+        <ul>
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/login">Employee Login</a></li>
+        </ul>
+    </nav>
+  
+   <article style="padding:20px; font:40px;">
+       
+        {{!--  Tracking number form  --}}
+        <form action="/parcel" method="GET">
+            <label for="trackingTF">Tracking Number</label>
+            <input 
+                type="text" 
+                name="trackingNumber" 
+                pattern="[A-Za-z0-9]{16}" 
+                title="Tracking number should be 16 characters long" 
+                placeholder="Enter tracking number" 
+                autofocus
+            />
+
+            <input type="submit" value="Track"/>
+            <input type="reset" value="Reset"/>
+        </form>
+        
+        {{!-- If an error is found, render it --}}
+        {{#if error_message}}
+            <span class="error-message">{{error_message}}</span>
+        {{/if}}
+        
+        <br />
+        <br />
+
+        {{! Display recent Tracking numbers }}
+        {{#if numbers}}
+            <div id="recents-container">
+                <h4>Recent Numbers:</h4>
+                <ul>
+                    {{#each numbers}}
+                    <li><a href="/parcel?trackingNumber={{this}}">{{this}}</a></li>  
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
+    </article>
+
+</section>
+
+{{!-- Footer --}}
+{{> footer}}

@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="css/index.css">
+
+{{!-- Header section with logo --}}
+{{> header}}
+
+<section>
+    {{!-- Navbar with links to home page and login page --}}
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/login" class="active">Employee Login</a></li>
+        </ul>
+    </nav>
+   
+    <article style="padding:20px; font:40px;">
+   
+        <h1>Login</h1>
+
+        <form action="/processLogin" method="POST">
+            <label for="email">Email</label>
+            <input type="text" name="email" placeholder="Enter email here">
+            <br><br>
+            <label for="password">Password</label>
+            <input type="password" name="password" placeholder="Enter password here">
+            <br><br>
+            <input type="checkbox" name="stay_signed_in" checked>
+            <label for="stay_signed_in">Stay signed in?</label>
+            <br><br>
+            <input type="submit" value="Login">
+        </form>
+
+        {{#if error_message}}
+            <span class="error-message">{{error_message}}</span>
+        {{/if}}
+
+    </article>
+</section>
+
+{{!-- Footer --}}
+{{> footer}}

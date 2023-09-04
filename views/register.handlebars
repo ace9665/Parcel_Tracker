@@ -1,0 +1,71 @@
+{{!-- <link rel="stylesheet" href="css/index2.css"> --}}
+
+<style>
+    article {
+    text-align: center;
+    background-color: #f9f9f4;
+    height: 500px;
+    padding-left: 10%;
+  }
+  
+  .center {
+    display: block;
+    margin-left: 40%;
+    margin-right: 60%;
+    margin-top: 10px;
+  }
+  
+  .demo {
+    color: #333333;
+  }
+  
+  .active {
+    font-style: italic;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+</style>
+
+{{!-- Header section with logo --}}
+{{> adminHeader}}
+
+<section>
+    <article style="padding:20px; font:40px;">
+        <h1>Registration Form</h1>
+        <form action="/admin/processRegistration" method="POST">
+            <div style="width: 50%; height:100%; float:left; align-content:right">
+                <label for="fname">First Name</label> <br><br>
+                <label for="lname">Last Name</label> <br><br>
+                <label for="email">Email</label> <br><br>
+                <label for="password">password</label> <br><br>
+            </div>
+            <div style="width: 50%; height:100%; float:right; align-content:left">
+                <input type="text" name="fname"> <br><br>
+                <input type="text" name="lname"> <br><br>
+                <input type="email" name="email"> <br><br>
+                <input type="password" name="password"> <br><br>
+            </div>
+            <input type="submit" value="Register">
+        </form>
+        <br><br>
+
+        {{!-- display error messages --}}
+        {{#if error_message}}
+          <span class="error-message">{{error_message}}</span>
+        {{/if}}
+
+        {{!-- display any other message --}}
+        {{#if message}}
+          <span style="color: green; font-size:12px; font-weight:bold">{{message}}</span>
+        {{/if}}
+        <br><br>
+    </article>
+</section>
+
+{{!-- Footer --}}
+{{> footer}}
